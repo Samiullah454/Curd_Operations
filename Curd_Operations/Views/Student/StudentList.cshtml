@@ -1,0 +1,45 @@
+﻿@model List<Curd_Operations.Context.Student_Details>
+@{
+    ViewBag.Title = "StudentList";
+}
+<div></div>
+
+    @Html.ActionLink("Create New", "Student",null, new { @class = "btn btn-primary" })
+<table class="table table-hover">
+    <tr>
+        
+        <th> FirstName</th>
+        <th> LastName</th>
+        <th> CNIC</th>
+        <th> DOB</th>
+        <th> Email</th>
+        <th> Phone No</th>
+        <th> Gender</th>
+        <th> Address</th>
+        <th> Grade</th>
+
+    </tr>
+    <tr>
+        @foreach(var item in Model)
+            {
+                <tr>
+
+                    <td>@item.Std_FName</td>
+                    <td>@item.Std_LName</td>
+                    <td>@item.Std_Cnic</td>
+                    <td>@item.Std_Dob</td>
+                    <td>@item.Std_Email</td>
+                    <td>@item.Std_PhoneNo</td>
+                    <td>@item.Std_Gender</td>
+                    <td>@item.Std_Address</td>
+                    <td>@item.Std_Grade</td>
+                    <td>
+                        <a href="@Url.Action("Student", new {item.Std_ID,item.Std_FName,item.Std_LName,
+                                item.Std_Cnic,item.Std_Dob,item.Std_Email,item.Std_PhoneNo,item.Std_Gender,item.Std_Address,item.Std_Grade})" class="btn btn-success"> Edit</a>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Std_ID }, new { @class = "btn btn-danger" })
+                    </td>
+
+                </tr>
+            }
+    
+</table>
